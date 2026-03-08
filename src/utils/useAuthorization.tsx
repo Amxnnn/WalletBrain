@@ -15,7 +15,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 
 const CHAIN = "solana";
-const CLUSTER = "devnet";
+const CLUSTER = "mainnet-beta";
 const CHAIN_IDENTIFIER = `${CHAIN}:${CLUSTER}`;
 
 export type Account = Readonly<{
@@ -97,8 +97,9 @@ async function persistAuthorization(
 }
 
 export const APP_IDENTITY = {
-  name: "Solana Mobile Expo Template",
-  uri: "https://fakedomain.com",
+  name: "WalletBrain",
+  uri: "https://walletbrain.app",
+  icon: "favicon.ico",
 };
 
 export function useAuthorization() {
@@ -107,7 +108,7 @@ export function useAuthorization() {
     queryKey: ["wallet-authorization"],
     queryFn: () => fetchAuthorization(),
   });
-  const { mutate: setAuthorization } = useMutation({
+  const { mutateAsync: setAuthorization } = useMutation({
     mutationFn: persistAuthorization,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["wallet-authorization"] });
@@ -132,12 +133,13 @@ export function useAuthorization() {
       const authorizationResult = await wallet.authorize({
         identity: APP_IDENTITY,
         chain: CHAIN_IDENTIFIER,
-        auth_token: authorization?.authToken,
+        // Don't pass auth_token — always fresh auth to avoid CancellationException
+        // from stale tokens causing the wallet to cancel the session
       });
       return (await handleAuthorizationResult(authorizationResult))
         .selectedAccount;
     },
-    [authorization, handleAuthorizationResult]
+    [handleAuthorizationResult]
   );
   const authorizeSessionWithSignIn = useCallback(
     async (wallet: AuthorizeAPI, signInPayload: SignInPayload) => {

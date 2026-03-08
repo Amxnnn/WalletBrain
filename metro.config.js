@@ -7,4 +7,7 @@ const config = getDefaultConfig(__dirname);
 // Add polyfill resolvers
 config.resolver.extraNodeModules.crypto = require.resolve('expo-crypto');
 
+// Allow Metro to resolve ESM packages that use the "exports" field (e.g. helius-sdk)
+config.resolver.unstable_enablePackageExports = true;
+
 module.exports = config;
