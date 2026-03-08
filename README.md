@@ -1,105 +1,100 @@
-# Solana Mobile Expo Template
+# 🧠 WalletBrain
 
-This template is a ready-to-go Android Expo dApp that offers:
+**"Your Solana wallet finally talks back."**
 
-- Solana libraries: `web3.js`, Mobile Wallet Adapter, and `spl-token`.
-- Required polyfills like `crypto` and `Buffer` configured.
-- Pre-built React UI and re-usable hooks and code patterns like `useMobileWallet`.
+WalletBrain is an AI-powered Solana wallet analyst built as an Android mobile app for the Solana Mobile Hackathon 2026. Designed primarily for the Solana Seeker device, it transforms raw on-chain data into plain English insights and interactive conversations.
 
-**This is only fully functional on Android.**
+Connect your wallet once via Mobile Wallet Adapter (MWA) and let WalletBrain tell your wallet's story.
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="./screenshots/screenshot1.png" alt="Scaffold dApp Screenshot 1" width=300 />
-    </td>
-    <td align="center">
-      <img src="./screenshots/screenshot2.png" alt="Scaffold dApp Screenshot 2" width=300 />
-    </td>
-    <td align="center">
-      <img src="./screenshots/screenshot3.png" alt="Scaffold dApp Screenshot 3" width=300 />
-    </td>
-  </tr>
-</table>
+---
 
-## Tech Stack
+## ✨ Features
 
-| Library               | Category          | Version | Description                                           |
-| --------------------- | ----------------- | ------- | ----------------------------------------------------- |
-| React Native          | Mobile Framework  | v0.76   | The best cross-platform mobile framework              |
-| Expo                  | SDK               | v52     | Allows (optional) Expo modules                        |
-| React                 | UI Framework      | v18.3   | The most popular UI framework in the world            |
-| Mobile Wallet Adapter | SDK               | v2.1    | Connect and request signing from mobile wallet apps   |
-| Solana web3.js        | SDK               | v1.78   | General Solana library for transactions and RPCs      |
-| spl-token             | SDK               | v0.4    | Library for building with Solana SPL tokens           |
-| React Native Paper    | Component Library | v5.12   | Production-ready components following Material Design |
-| React Navigation      | Navigation        | v6      | Performant and consistent navigation framework        |
-| React Query           | State management  | v5.24   | Async query management                                |
-| TypeScript            | Language          | v5      | Static typechecking                                   |
-| AsyncStorage          | Persistence       | v1.23   | State persistence                                     |
+- **Personalized Insights**: Auto-generated plain English summaries of your portfolio, idle SOL warnings, and fee waste analysis.
+- **AI Chat Analyst**: Talk to your wallet. Ask questions like *"Am I a good trader?"*, *"How much have I paid in fees?"*, or *"What is my biggest win?"*
+- **Visual Portfolio**: Clean, readable charts showing your portfolio value over time, asset breakdown, and transaction activity.
+- **Holdings Analysis & Market Pulse**: Get a one-line AI verdict on every token you hold and daily observations about the Solana ecosystem.
+- **SKR Staking Tracker**: Dedicated dashboard to track your SKR staking performance, APY, and estimated earnings.
+- **Wallet Personality**: Are you a *Diamond Hand 💎*, a *DeFi Farmer 🌾*, or a *Flip Machine 🔁*? WalletBrain analyzes your transaction history to assign you a unique personality card.
 
-## Quick Start
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: [React Native](https://reactnative.dev/) & [Expo](https://expo.dev/) (Android Only)
+- **Web3 Engine**: [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/) & [Mobile Wallet Adapter (MWA)](https://docs.solanamobile.com/react-native/expo)
+- **Data Layer**: [Helius SDK](https://www.helius.dev/) (DAS API + Enhanced Transactions)
+- **AI Layer**: [Google Generative AI (Gemini)](https://ai.google.dev/) / [Anthropic (Claude)](https://www.anthropic.com/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **UI & Charts**: React Native Paper, React native Gifted Charts
+
+> **Note:** This app is fully functional on **Android only** due to the Mobile Wallet Adapter (MWA) constraints. It's built specifically with the Solana Seeker device in mind!
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- A free [Expo](https://expo.dev/) account.
-- An Android device/emulator to test your app
-  - Install an MWA compliant wallet app on your device/emulator.
-- If using Expo's cloud service `eas build`, no further setup is required.
-- If building locally:
-  - React Native and Android Envrionment [setup](https://docs.solanamobile.com/getting-started/development-setup)
+1. An **Android device or emulator**.
+2. An MWA-compliant wallet installed on the device (e.g., **Phantom** or **Solflare**).
+3. A **Helius API Key** (Get one at [dashboard.helius.dev](https://dashboard.helius.dev)).
+4. An **AI API Key** (Gemini or Claude).
 
-### Initialize
+### 1. Installation
 
-Run the CLI command:
+Clone the repository and install dependencies using `yarn` (do not use `npm` due to MWA package resolutions):
 
+```bash
+git clone https://github.com/your-repo/walletbrain.git
+cd WalletBrain
+yarn install
 ```
-yarn create expo-app --template @solana-mobile/solana-mobile-expo-template
+
+### 2. Environment Setup
+
+Create a `.env` file in the root directory and add your API keys:
+
+```ini
+EXPO_PUBLIC_HELIUS_API_KEY=your_helius_api_key_here
+EXPO_PUBLIC_HELIUS_RPC_URL=https://mainnet.helius-rpc.com/?api-key=your_helius_api_key_here
+EXPO_PUBLIC_AI_API_KEY=your_gemini_or_claude_api_key_here
+EXPO_PUBLIC_NETWORK=mainnet-beta
 ```
 
-Choose your project name then navigate into the directory.
+### 3. Running the App
 
-### Build and run the app
+Start the Expo development server:
 
-Once your app is initialized, follow the **["Running the app"](https://docs.solanamobile.com/react-native/expo#running-the-app)** guide to launch the template as a custom development build.
+```bash
+yarn start
+```
 
-## Troubleshooting
+Press `a` to open the app on your connected Android device or emulator.
 
-- `Metro has encountered an error: While trying to resolve module @solana-mobile/mobile-wallet-adapter-protocol...`
+If you encounter issues with standard Expo Go, you need to build a custom development client (EAS):
 
-  - This is an on-going issue when using `npm install` to install the Expo template.
-  - To mitigate, clean your project dependencies and reinstall with `yarn install`
+```bash
+# Build a local development APK
+yarn build:local
 
-- `The package 'solana-mobile-wallet-adapter-protocol' doesn't seem to be linked. Make sure: ...`
+# Or build on Expo EAS servers
+yarn build
+```
 
-  - Ensure you are _NOT_ using Expo Go to run your app.
-  - You need to be using an [Expo custom development build](https://docs.solanamobile.com/react-native/expo#custom-development-build), rather than Expo Go.
+---
 
-- `failed to connect to...`
+## 🐛 Troubleshooting
 
-  - This is an Expo error that can occur when trying to connect to the dev server on certain Wifi networks.
-  - To fix, try starting the dev server with the `--tunnel` command (`npx expo start --dev-client --tunnel`)
+- **`crypto.getRandomValues() not supported`**: Ensure the polyfills are correctly imported at the very top of `index.js`.
+- **`@solana-mobile/mobile-wallet-adapter-protocol not found`**: Clean your project dependencies and make sure you used `yarn install` instead of `npm install`.
+- **MWA package doesn't seem to be linked**: Expo Go does not support custom native modules like MWA out-of-the-box. You must compile a custom development build (`yarn build:local` or `yarn android`).
+- **No data is loading**: Ensure your target wallet is on Mainnet and has actual transaction history. Ensure the `EXPO_PUBLIC_HELIUS_API_KEY` is properly loaded.
 
-- `Error: crypto.getRandomValues() not supported`
-  - This is a polyfill issue when trying to use certain functions from the `@solana/web3.js` in a React Native/Expo environment.
-  - To fix, ensure your App properly imports and uses the polyfills like in this [guide](http://docs.solanamobile.com/react-native/expo#step-3-update-appjs-with-polyfills).
+---
 
-<br>
+## 🏆 Hackathon Context
 
-- `error Failed to load configuration of your project.`
-  - Same as above, but for `yarn`. [Uninstall and reinstall](https://github.com/react-native-community/cli#updating-the-cli) the CLI through yarn.
+Built for the **Solana Mobile Hackathon 2026**, aiming for the Seeker device track and the SKR bonus track.
 
-<br>
-
-- `Looks like your iOS environment is not properly set`:
-  - You can ignore this during template initialization and build the Android app as normal. This template is only compatible with Android.
-
-<br>
-
-- `Usage Error: It seems you are trying to add a package using a https:... url; we now require package names to be explicitly specified.`
-  - This error happens on certain versions of `yarn`, and occurs if you try to initialize the template through the Github repo URL, rather than the npm package. To avoid this, use the `@solana-mobile/solana-mobile-dapp-scaffold` package as specified, or downgrade your `yarn` version to classic (1.22.x).
-
-<br>
-
-- `error Couldn't find the ".../@solana-mobile/solana-mobile-dapp-scaffold/template.config.js file inside "@solana-mobile/solana-mobile-dapp-scaffold" template.`
-  - This is a [known error](https://github.com/react-native-community/cli/issues/1924) that occurs with certain versions of `yarn` (>= 3.5.0). It is fixed by running the cli command with the `--npm` flag or downgrading your version of `yarn`.
+*WalletBrain — Because every Solana wallet has a story.*
