@@ -1,4 +1,4 @@
-# 🧠 WalletBrain
+#  WalletBrain
 
 **"Your Solana wallet finally talks back."**
 
@@ -8,7 +8,7 @@ Connect your wallet once via Mobile Wallet Adapter (MWA) and let WalletBrain tel
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Personalized Insights**: Auto-generated plain English summaries of your portfolio, idle SOL warnings, and fee waste analysis.
 - **AI Chat Analyst**: Talk to your wallet. Ask questions like *"Am I a good trader?"*, *"How much have I paid in fees?"*, or *"What is my biggest win?"*
@@ -19,7 +19,7 @@ Connect your wallet once via Mobile Wallet Adapter (MWA) and let WalletBrain tel
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Framework**: [React Native](https://reactnative.dev/) & [Expo](https://expo.dev/) (Android Only)
 - **Web3 Engine**: [Solana Web3.js](https://solana-labs.github.io/solana-web3.js/) & [Mobile Wallet Adapter (MWA)](https://docs.solanamobile.com/react-native/expo)
@@ -32,7 +32,7 @@ Connect your wallet once via Mobile Wallet Adapter (MWA) and let WalletBrain tel
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -84,7 +84,7 @@ yarn build
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 - **`crypto.getRandomValues() not supported`**: Ensure the polyfills are correctly imported at the very top of `index.js`.
 - **`@solana-mobile/mobile-wallet-adapter-protocol not found`**: Clean your project dependencies and make sure you used `yarn install` instead of `npm install`.
@@ -93,8 +93,3 @@ yarn build
 
 ---
 
-## 🏆 Hackathon Context
-
-Built for the **Solana Mobile Hackathon 2026**, aiming for the Seeker device track and the SKR bonus track.
-
-*WalletBrain — Because every Solana wallet has a story.*
