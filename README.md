@@ -28,7 +28,26 @@ Connect your wallet once via Mobile Wallet Adapter (MWA) and let WalletBrain tel
 - **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 - **UI & Charts**: React Native Paper, React native Gifted Charts
 
+---
+
+## Development Approach
+
+WalletBrain was built using a rapid **“vibe coding”** workflow during the **Solana Mobile Hackathon 2026**.
+
+Instead of following a long traditional development cycle, the app was developed through fast iteration, AI-assisted coding, and continuous experimentation. Core features such as wallet analytics, AI conversation, portfolio insights, and transaction analysis were prototyped quickly and refined through multiple short feedback loops.
+
+This approach allowed the project to move from idea to a fully functional Android prototype in a very short time, focusing on:
+
+- Rapid prototyping of ideas
+- AI-assisted development for faster implementation
+- Iterative improvement of user experience and insights
+- Shipping a working product quickly for real user interaction
+
+The goal was to demonstrate how **AI + on-chain Solana data** can transform a normal wallet into an intelligent financial companion that explains your activity in plain English.
+
+
 > **Note:** This app is fully functional on **Android only** due to the Mobile Wallet Adapter (MWA) constraints. It's built specifically with the Solana Seeker device in mind!
+
 
 ---
 
